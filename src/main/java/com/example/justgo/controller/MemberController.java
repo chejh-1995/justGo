@@ -21,6 +21,7 @@ public class MemberController {
     @RequestMapping("/show")
     @ResponseBody
     public String showMember(HttpServletRequest request){
+        System.out.println("傻掉车架会");
         System.out.println("mid"+memberService.findMember(request.getParameter("mid")).toString());
         return memberService.findMember(request.getParameter("mid")).toString();
     }
