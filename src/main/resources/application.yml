@@ -12,3 +12,13 @@ spring:
     username: root
     password: abc123
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+  redis:
+    host: 120.78.93.197
+    port: 6379
+    timeout: 100
+    jedis:
+      pool:
+        max-active:  10
+

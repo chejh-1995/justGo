@@ -14,6 +14,7 @@ import javax.annotation.Resource;
 public class MemberService {
     @Resource
     MemberDao memberDao;
+
     public Member findMember(String mid){
         System.out.println("mid"+mid);
         Member member=memberDao.findOne(mid);
