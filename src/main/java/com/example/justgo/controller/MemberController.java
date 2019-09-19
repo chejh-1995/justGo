@@ -1,6 +1,11 @@
 package com.example.justgo.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.example.justgo.entity.Member;
 import com.example.justgo.service.MemberService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,11 +24,15 @@ import javax.servlet.http.HttpServletRequest;
 public class MemberController {
     @Resource
    private MemberService memberService; //记得写private
-
+    @Autowired
+    private RedisTemplate redisTemplate;
     @RequestMapping("/show")
     public String showMember(HttpServletRequest request){
         System.out.println("傻掉车架会");
-        System.out.println("mid"+memberService.findMember(request.getParameter("mid")).toString());
-        return memberService.findMember(request.getParameter("mid")).toString();
+        System.out.println("mid"+memberService.getMember(request.getParameter("mid")).toString());
+        Member member =memberService.getMember(request.getParameter("mid"));
+        redisTemplate.opsForValue().set("cjh",member);
+        return JSONObject.toJSONString(member);
+
     }
 }
