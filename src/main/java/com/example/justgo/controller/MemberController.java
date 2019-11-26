@@ -28,7 +28,7 @@ public class MemberController {
     private RedisTemplate redisTemplate;
     @RequestMapping("/show")
     public String showMember(HttpServletRequest request){
-        System.out.println("傻逼车家辉");
+        System.out.println("傻逼sb车家辉");
         System.out.println("mid"+memberService.getMember(request.getParameter("mid")).toString());
         Member member =memberService.getMember(request.getParameter("mid"));
         redisTemplate.opsForValue().set("cjh",member);
