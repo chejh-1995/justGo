@@ -32,6 +32,8 @@ public class MemberController {
         System.out.println("mid"+memberService.getMember(request.getParameter("mid")).toString());
         Member member =memberService.getMember(request.getParameter("mid"));
         redisTemplate.opsForValue().set("cjh",member);
+
+		System.out.println("123");
         return JSONObject.toJSONString(member);
 
     }
